@@ -1,10 +1,10 @@
-from day_1 import get_depth_data
+from .day_1 import get_depth_data
 
 def add_three(data, i):
-    '''Adds three consecutive items in a list
-
-    Returns:    sum of three consecutive items in a list'''
-
+    '''Adds three consecutive items in a list together, and returns 
+    their sum.
+    Inputs:     list, starting index
+    Returns:    a number'''
     sum = 0
 
     for n in range(i, i+3):
@@ -17,11 +17,12 @@ def add_three(data, i):
 
 def compare(data, i):
     '''Compares the sum of three consecutive list items to 
-    the sume of three consecutive list items one removed.
+    the sum of another three consecutive list items, one removed from
+    the first.
 
     Inputs:     list, starting index
     returns:    True if first three is smaller the next three
-                False if first three is larger'''
+                False if first three is larger.'''
 
     return add_three(data, i) < add_three(data, i+1)
 
@@ -32,8 +33,8 @@ def iterate_depth_data(data):
     consecutive numbers. Returns the number of times the former
     is a smaller number than the latter.
 
-    Inputs:     list of ints
-    Returns:    int'''
+    Inputs:     list
+    Returns:    a number'''
 
     num = 0
 

@@ -1,7 +1,8 @@
 import json
 
 def get_depth_data(fileName):
-    '''Returns a list of ints taken from a file, "fileName" '''
+    '''Extracts data taken from a file, "fileName" 
+    Returns:    a list'''
     data = []
     with open(fileName, encoding='utf-8') as file:
 
@@ -11,8 +12,9 @@ def get_depth_data(fileName):
 
 
 def iterate_depth_data(data):
-    '''Iterates over each data point in list, "data", 
-    returns the number of times a data point is smaller than the next point.'''
+    '''Iterates over each data point in list, "data", and 
+    returns the number of times a data point is smaller than the next point.
+    Returns:    int'''
     num = 0
     for n in range(len(data)-1):
         if (data[n] < data[n+1]):

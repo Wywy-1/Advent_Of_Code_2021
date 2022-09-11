@@ -7,6 +7,4 @@ class Vector:
         self.num = num
 
 sub = Vector(0,0,0)
-
-#Git check
 #print("Vector for submarine is: ", sub.hor, sub.vir, sub.num)

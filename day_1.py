@@ -8,6 +8,7 @@ def get_depth_data(fileName):
 
         for line in file:
             data.append(int(line))
+            
     return data
 
 

@@ -3,7 +3,7 @@ from abc import update_abstractmethods
 
 class Vector:
     '''Represents direction and degree of movement from a starting 
-    point (0,0)'''
+    point; (0,0) where (horizontal, vertical)'''
 
     #Constructor
     def __init__(token, hor, vir):

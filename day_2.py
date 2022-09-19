@@ -1,4 +1,5 @@
 from abc import update_abstractmethods
+#from .day_1 import get_depth_data
 
 
 class Vector:
@@ -26,22 +27,40 @@ def update_vector(sub, dir, degree):
 
     if (dir == "forward"):
         sub.add_hor(degree)
-        #print(f'Going forward {degree} units: sub.hor = {sub.hor}')    #test
     elif (dir == "down"):
         sub.add_vir(degree)
-        #print(f'Going down {degree} units: sub.vir = {sub.vir}')   #test
     else:
         sub.add_vir(-1*degree)
-        #print(f'Going up {degree} units: sub.vir = {sub.vir}') #test
+
+
+def get_depth_data(fileName):
+    '''Extracts data taken from a file, "fileName" 
+    Returns:    a list'''
+    data = []
+    with open(fileName, encoding='utf-8') as file:
+
+        for line in file:
+            x = line.split()
+            data.append(x)
+            #data.append(int(line))
+
+    return data
+
+
+def iterate_depth_list(data, sub):
+    
+    for i in range(len(data)):
+        #print('Line: %d\t%s' % (i, data[i]))           # 'Line: 9 ['forward', 8]
+        #print('\tDirection:\t%s'  % (data[i][0]))      # 'Direction  forward'
+        #print('\tDegree:\t\t%d' % (int(data[i][1])))   # 'Degree     8'
+        update_vector(sub, data[i][0], int(data[i][1]))
+    
+    print("Sub is now:\n\tForward\t%d,\n\tDown\t%d." % (sub.hor, sub.vir))
 
 
 sub = Vector(0,0)
+data = []
+fileName = "testInput_2.txt"
 
-''' test: update_vector 
-update_Vector(sub, "forward", 5)
-update_Vector(sub, "forward", 12)
-update_Vector(sub, "down", 7)
-update_Vector(sub, "up", 2)
-'''
-
-#print("Vector for submarine is: ", sub.hor, sub.vir, sub.num)
+data = get_depth_data(fileName)        
+iterate_depth_list(data, sub)

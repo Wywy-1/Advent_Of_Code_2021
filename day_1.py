@@ -8,11 +8,11 @@ def get_depth_data(fileName):
 
         for line in file:
             data.append(int(line))
-            
+
     return data
 
 
-def iterate_depth_data(data):
+def compare_size_single(data):
     '''Iterates over each data point in list, "data", and 
     returns the number of times a data point is smaller than the next point.
     Returns:    int'''
@@ -31,7 +31,7 @@ def main():
     fileName = 'input_day_1'
 
     data = get_depth_data(fileName)
-    print(iterate_depth_data(data))
+    print(compare_size_single(data))
 
 if __name__ == "__main__":
     main()

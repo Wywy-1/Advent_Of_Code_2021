@@ -20,19 +20,6 @@ class Vector:
         self.vir += num
 
 
-def update_vector(sub, dir, degree):
-    '''Modifies a vector-class object when given a 
-    direction (forward, up, or down) and a degree of movement
-    Inputs:     vector object, string, num'''
-
-    if (dir == "forward"):
-        sub.add_hor(degree)
-    elif (dir == "down"):
-        sub.add_vir(degree)
-    else:
-        sub.add_vir(-1*degree)
-
-
 def get_depth_data(fileName):
     '''Extracts data taken from a file, "fileName" 
     Returns:    a list'''
@@ -45,6 +32,19 @@ def get_depth_data(fileName):
             data.append(x)      #   2D array of the data.
 
     return data
+    
+
+def update_vector(sub, dir, degree):
+    '''Modifies a vector-class object when given a 
+    direction (forward, up, or down) and a degree of movement
+    Inputs:     vector object, string, num'''
+
+    if (dir == "forward"):
+        sub.add_hor(degree)
+    elif (dir == "down"):
+        sub.add_vir(degree)
+    else:
+        sub.add_vir(-1*degree)
 
 
 def calculate_course(data, sub):

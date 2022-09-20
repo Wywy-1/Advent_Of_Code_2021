@@ -47,20 +47,21 @@ def get_depth_data(fileName):
     return data
 
 
-def iterate_depth_list(data, sub):
+def calculate_course(data, sub):
     
     for i in range(len(data)):
-        #print('Line: %d\t%s' % (i, data[i]))           # 'Line: 9 ['forward', 8]
-        #print('\tDirection:\t%s'  % (data[i][0]))      # 'Direction  forward'
-        #print('\tDegree:\t\t%d' % (int(data[i][1])))   # 'Degree     8'
         update_vector(sub, data[i][0], int(data[i][1]))
     
+
+def main():
+    sub = Vector(0,0)
+    data = []
+    fileName = "input_day_2.txt"
+
+    data = get_depth_data(fileName)        
+    calculate_course(data, sub)
     print("Sub is now:\n\tForward\t%d,\n\tDown\t%d." % (sub.hor, sub.vir))
 
 
-sub = Vector(0,0)
-data = []
-fileName = "testInput_2.txt"
-
-data = get_depth_data(fileName)        
-iterate_depth_list(data, sub)
+if __name__ == "__main__":
+    main()

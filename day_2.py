@@ -37,12 +37,12 @@ def get_depth_data(fileName):
     '''Extracts data taken from a file, "fileName" 
     Returns:    a list'''
     data = []
+
     with open(fileName, encoding='utf-8') as file:
 
-        for line in file:
-            x = line.split()
-            data.append(x)
-            #data.append(int(line))
+        for line in file:       # Split() makes 1 line read from file
+            x = line.split()    #   into 2 elements, and creates a
+            data.append(x)      #   2D array of the data.
 
     return data
 

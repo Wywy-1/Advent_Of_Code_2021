@@ -7,17 +7,17 @@ class Vector:
     point; (0,0) where (horizontal, vertical)'''
 
     #Constructor
-    def __init__(token, hor, vir):
-        token.hor = hor     #i.e., "forward"
-        token.vir = vir     #i.e., "down" and "-1(up)"
+    def __init__(token, hori, virt):
+        token.hori = hori     #i.e., "forward"
+        token.virt = virt     #i.e., "down" (+) and "up" (-)
     
     #Modifiers
-    def add_hor(self, num):
-        self.hor += num
+    def add_hori(self, num):
+        self.hori += num
 
 
-    def add_vir(self, num):
-        self.vir += num
+    def add_virt(self, num):
+        self.virt += num
 
 
 def get_depth_data(fileName):
@@ -34,23 +34,23 @@ def get_depth_data(fileName):
     return data
     
 
-def update_vector(sub, dir, degree):
+def update_vector(vec, dir, degree):
     '''Modifies a vector-class object when given a 
     direction (forward, up, or down) and a degree of movement
     Inputs:     vector object, string, num'''
 
     if (dir == "forward"):
-        sub.add_hor(degree)
+        vec.add_hor(degree)
     elif (dir == "down"):
-        sub.add_vir(degree)
+        vec.add_vir(degree)
     else:
-        sub.add_vir(-1*degree)
+        vec.add_vir(-1*degree)  # If not "forward" or "down", assumes up.
 
 
-def calculate_course(data, sub):
+def calculate_course(data, vec):
     
     for i in range(len(data)):
-        update_vector(sub, data[i][0], int(data[i][1]))
+        update_vector(vec, data[i][0], int(data[i][1]))
     
 
 def main():
@@ -60,7 +60,7 @@ def main():
 
     data = get_depth_data(fileName)        
     calculate_course(data, sub)
-    print("Sub is now:\n\tForward\t%d,\n\tDown\t%d." % (sub.hor, sub.vir))
+    print("Sub is now:\n\tForward\t%d,\n\tDown\t%d." % (sub.hori, sub.virt))
 
 
 if __name__ == "__main__":

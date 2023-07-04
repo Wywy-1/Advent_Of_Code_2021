@@ -21,7 +21,7 @@ class Vector:
 
 
 def get_depth_data(fileName):
-    '''Extracts data taken from a file, "fileName" 
+    '''Extracts data taken from a .txt file 
     Returns:    a list'''
     data = []
 

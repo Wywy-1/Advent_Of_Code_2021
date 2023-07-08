@@ -10,15 +10,20 @@ class Vector:
     def __init__(token, hori, virt):
         token.hori = hori     #i.e., "forward"
         token.virt = virt     #i.e., "down" (+) and "up" (-)
+        token.aim = 0
     
     #Modifiers
     def add_hori(self, num):
         self.hori += num
 
-
     def add_virt(self, num):
         self.virt += num
 
+    def add_aim(self, num):
+        self.aim += num
+
+    def get_aim(self):
+        return self.aim
 
 def get_depth_data(fileName):
     '''Extracts data taken from a .txt file 
@@ -40,11 +45,12 @@ def update_vector(vec, dir, degree):
     Inputs:     vector object, string, num'''
 
     if (dir == "forward"):
-        vec.add_hor(degree)
+        vec.add_hori(degree)
+        vec.add_virt(degree * vec.get_aim())
     elif (dir == "down"):
-        vec.add_vir(degree)
+        vec.add_aim(degree)
     else:
-        vec.add_vir(-1*degree)  # If not "forward" or "down", assumes up.
+        vec.add_aim(-1*degree)  # If not "forward" or "down", assumes up.
 
 
 def calculate_course(data, vec):
@@ -60,8 +66,8 @@ def main():
 
     data = get_depth_data(fileName)        
     calculate_course(data, sub)
-    print("Sub is now:\n\tForward\t%d,\n\tDown\t%d." % (sub.hori, sub.virt))
-
+    print("Sub is now:\n\tHorizontal\t%d,\n\tDepth\t%d." % (sub.hori, sub.virt))
+    #print("Multiplied:\t%d" % (sub.virt * sub.hori))
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,3 @@
-import json
-
 def get_depth_data(fileName):
     '''Extracts data taken from a file, "fileName" 
     Returns:    a list'''
@@ -11,7 +9,6 @@ def get_depth_data(fileName):
 
     return data
 
-
 def compare_size_single(data):
     '''Iterates over each data point in list, "data", and 
     returns the number of times a data point is smaller than the next point.
@@ -22,7 +19,6 @@ def compare_size_single(data):
             num += 1
     return num
     
-
 def main():
     '''Initializes the data list and prints results of
     iterate_depth_data'''

@@ -41,11 +41,18 @@ def calc_gamma():
         else:
             gamma_intlist[count] = 2
     
-    # convert integer list, gamma_int_list, into string, gamma
-    for num in gamma_intlist:
-        gamma += str(num)
-
+    gamma = intList2string(gamma_intlist)
     return gamma
+
+def intList2string(x): 
+    '''Converts an integer-list into a string.'''
+
+    con_string=''
+
+    for num in x:
+        con_string += str(num)
+
+    return con_string
 
 
 def calc_epsilon():

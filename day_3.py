@@ -5,7 +5,7 @@ def calc_gam_eps():
 
     test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
     
-    gamma = ''
+    #gamma = ''
     epsilon = ''
 
     gamma_intlist = [0,0,0,0]
@@ -38,11 +38,11 @@ def calc_gam_eps():
             gamma_intlist[count] = 2
     
     epsilon = find_compliment(gamma_intlist)
-    print("epsilon after calc_epsilon call at 41 is:")
-    print(*epsilon)
+    #print("epsilon after calc_epsilon call at 41 is:")
+    #print(*epsilon)
 
-    gamma = intList2string(gamma_intlist)
-    return gamma
+    #gamma = intList2string(gamma_intlist)
+    return gamma_intlist, epsilon
 
 
 def intList2string(x): 
@@ -77,13 +77,17 @@ def find_compliment(gamma):
     return eps
 
 
-def calc_pwr_consum(gamma):
-    gamma = calc_gam_eps()
+def calc_pwr_consum(gamma, epsilon):
+    gamma, epsilon = calc_gam_eps()
 
-    print('gamma in binary is\t{}'.format(gamma))
+    bin_gamma = " ".join(format(x,'b') for x in gamma)  # Converts each int in int-list into binary
+    bin_epsi = " ".join(format(x,'b') for x in epsilon)
+
+    print("Printing binary gamma: {}".format(bin_gamma))
+    print("Printing binary epsilon: {}".format(bin_epsi))
     # TODO #2 Convert gamma (str) into decimal number
 
 
 if __name__ == "__main__":
-    calc_pwr_consum(0)
+    calc_pwr_consum(0,0)
     #calc_gamma()   #test

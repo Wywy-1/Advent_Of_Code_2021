@@ -5,25 +5,25 @@ def calc_gam_eps():
 
     test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
     
-    epsilon = ''
-
     gamma_intlist = [0,0,0,0]
     gamma_float = [0.0,0.0,0.0,0.0]
+    epsilon = ''
 
     word_counter = 0
     
-    # Adds the value of bits in corresponding indices across all words in test_file
+    # Adds the value of bits in corresponding indices across all words in test_file,
+    #   saves to gamma_intlist
     #   Also counts the number of words (lines) in test file, records in word_counter
     for line in test_file:
         for count, bit_value in enumerate(line):
             gamma_intlist[count] += int(bit_value)
         word_counter += 1
 
-    # Averages the raw numbers in each index of gamma_intlist by number of words.
+    # Averages the raw numbers in each index of gamma_intlist by number of words/lines.
     #   Uses these averages to discern which occurs more often, 0 or 1, for
-    #   each index across all words, stores in gamma_intlist
+    #   each index across all words, stores in gamma_intlist.
     #   TODO #3 Discern how to best address cases where 1 and 0 occur equally 
-    #       often, currently you're assigning those indices with a "2".
+    #       often, currently you're assigning those indices with a "1".
     for count,value in enumerate(gamma_intlist):
         gamma_float[count] = value/word_counter
         if (gamma_float[count] < 0.5):
@@ -31,7 +31,7 @@ def calc_gam_eps():
         elif (gamma_float[count] > 0.5):
             gamma_intlist[count] = 1
         else:   # When 0 and 1 occur equally as often
-            gamma_intlist[count] = 2
+            gamma_intlist[count] = 1
     
     epsilon = find_compliment(gamma_intlist)
 
@@ -58,7 +58,7 @@ def find_compliment(gamma):
     Return: int-list'''
     eps = []
 
-    for index, x in enumerate(gamma):
+    for x in gamma:
         if x == 0:
             eps.append(1)
         else:

@@ -1,15 +1,14 @@
 def calc_gam_eps():
     '''Calculates the most common bit in each index of a series of binary words (x12 bits) 
         from a .txt file.
-        Output: string'''
+        Returns: two int-lists'''
 
-    #test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
+    #TODO #1 Input: file name
     test_file = ['00100','11110','10110','10111','10101','01111','00111','11100','10000','11001','00010','01010']
     
-    gamma_intlist = [0,0,0,0,0]
-    gamma_float = [0.0,0.0,0.0,0.0,0.0]
-    epsilon = ''
-
+    gamma = [0,0,0,0,0]
+    epsilon = gamma
+    indices_averages = [0.0,0.0,0.0,0.0,0.0]
     word_counter = 0
     
     # Adds the value of bits in corresponding indices across all words in test_file,
@@ -17,7 +16,7 @@ def calc_gam_eps():
     #   Also counts the number of words (lines) in test file, records in word_counter
     for line in test_file:
         for count, bit_value in enumerate(line):
-            gamma_intlist[count] += int(bit_value)
+            gamma[count] += int(bit_value)
         word_counter += 1
 
     # Averages the raw numbers in each index of gamma_intlist by number of words/lines.
@@ -25,18 +24,18 @@ def calc_gam_eps():
     #   each index across all words, stores in gamma_intlist.
     #   TODO #3 Discern how to best address cases where 1 and 0 occur equally 
     #       often, currently you're assigning those indices with a "1".
-    for count,value in enumerate(gamma_intlist):
-        gamma_float[count] = value/word_counter
-        if (gamma_float[count] < 0.5):
-            gamma_intlist[count] = 0
-        elif (gamma_float[count] > 0.5):
-            gamma_intlist[count] = 1
+    for count,value in enumerate(gamma):
+        indices_averages[count] = value/word_counter
+        if (indices_averages[count] < 0.5):
+            gamma[count] = 0
+        elif (indices_averages[count] > 0.5):
+            gamma[count] = 1
         else:   # When 0 and 1 occur equally as often
-            gamma_intlist[count] = 1
+            gamma[count] = 1
     
-    epsilon = find_compliment(gamma_intlist)
+    epsilon = find_compliment(gamma)
 
-    return gamma_intlist, epsilon
+    return gamma, epsilon
 
 
 def intList2string(x): 

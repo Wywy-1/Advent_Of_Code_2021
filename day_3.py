@@ -1,6 +1,6 @@
 def get_pwr_data(fileName):
     '''Extracts data taken from a file, "fileName"
-    Input:      a string 
+    Input:      a string (name of .txt file)
     Returns:    a list[str]'''
 
     data: list[str] = []

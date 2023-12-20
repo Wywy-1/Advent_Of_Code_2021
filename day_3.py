@@ -3,10 +3,11 @@ def calc_gam_eps():
         from a .txt file.
         Output: string'''
 
-    test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
+    #test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
+    test_file = ['00100','11110','10110','10111','10101','01111','00111','11100','10000','11001','00010','01010']
     
-    gamma_intlist = [0,0,0,0]
-    gamma_float = [0.0,0.0,0.0,0.0]
+    gamma_intlist = [0,0,0,0,0]
+    gamma_float = [0.0,0.0,0.0,0.0,0.0]
     epsilon = ''
 
     word_counter = 0
@@ -73,11 +74,18 @@ def calc_pwr_consum(gamma, epsilon):
     Input: int-list, int-list'''
     gamma, epsilon = calc_gam_eps()
 
-    bin_gamma = " ".join(format(x,'b') for x in gamma)  # Converts each int in int-list into binary
-    bin_epsi = " ".join(format(x,'b') for x in epsilon)
+    bin_gamma = "".join(format(x,'b') for x in gamma)   # Converts each int in int-list to binary.
+    dec_gamma = int(bin_gamma, 2)                       # Converts bin_gamma, as one number, 
+                                                        #   to a decimal integer.
+
+    bin_epsi = "".join(format(x,'b') for x in epsilon)
+    dec_epsi = int(bin_epsi, 2)
 
     print("Printing binary gamma: {}".format(bin_gamma))
+    print("Printing decimal gamma: {}".format(dec_gamma))
     print("Printing binary epsilon: {}".format(bin_epsi))
+    print("Printing decimal epsilon: {}".format(dec_epsi))
+
     # TODO #2 Convert gamma (str) into decimal number
 
 

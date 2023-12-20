@@ -5,7 +5,6 @@ def calc_gam_eps():
 
     test_file = ['1100','1110','1111','1100']    #TODO #1 Input: file name
     
-    #gamma = ''
     epsilon = ''
 
     gamma_intlist = [0,0,0,0]
@@ -19,9 +18,6 @@ def calc_gam_eps():
         for count, bit_value in enumerate(line):
             gamma_intlist[count] += int(bit_value)
         word_counter += 1
-    
-    #print("At 27, after first for-loop in calc_gamma, gamma_intlist is:")
-    #print(*gamma_intlist)
 
     # Averages the raw numbers in each index of gamma_intlist by number of words.
     #   Uses these averages to discern which occurs more often, 0 or 1, for
@@ -38,10 +34,7 @@ def calc_gam_eps():
             gamma_intlist[count] = 2
     
     epsilon = find_compliment(gamma_intlist)
-    #print("epsilon after calc_epsilon call at 41 is:")
-    #print(*epsilon)
 
-    #gamma = intList2string(gamma_intlist)
     return gamma_intlist, epsilon
 
 
@@ -65,9 +58,6 @@ def find_compliment(gamma):
     Return: int-list'''
     eps = []
 
-    #print("At 66, in calc_epsilon, gamma_intlist is:")
-    #print(*gamma)
-
     for index, x in enumerate(gamma):
         if x == 0:
             eps.append(1)
@@ -78,6 +68,9 @@ def find_compliment(gamma):
 
 
 def calc_pwr_consum(gamma, epsilon):
+    '''Calculates the power consumption of the christmas submarine and
+    prints the results to terminal.
+    Input: int-list, int-list'''
     gamma, epsilon = calc_gam_eps()
 
     bin_gamma = " ".join(format(x,'b') for x in gamma)  # Converts each int in int-list into binary
@@ -90,4 +83,3 @@ def calc_pwr_consum(gamma, epsilon):
 
 if __name__ == "__main__":
     calc_pwr_consum(0,0)
-    #calc_gamma()   #test

@@ -15,18 +15,17 @@ def calc_gam_eps():
         from a .txt file.
         Returns: two int-lists'''
 
-    #pwr_data = get_pwr_data('input_day_3_test.txt')
-    pwr_data = ['00100','11110','10110','10111','10101','01111','00111','11100','10000','11001','00010','01010']
+    pwr_data = get_pwr_data('input_day_3.txt')
+    #pwr_data = ['00100','11110','10110','10111','10101','01111','00111','11100','10000','11001','00010','01010']
 
-    gamma = [0,0,0,0,0]
-    indices_averages = [0.0,0.0,0.0,0.0,0.0]
+    #gamma = [0,0,0,0,0]
+    #indices_averages = [0.0,0.0,0.0,0.0,0.0]
 
 
-    #gamma = [0,0,0,0,0,0,0,0,0,0,0,0]
+    gamma = [0,0,0,0,0,0,0,0,0,0,0,0]
     epsilon = gamma
-    #indices_averages = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
+    indices_averages = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     word_counter = 0
-    #count = 0
     
     # Adds the value of bits in corresponding indices across all words in test_file,
     #   saves to gamma_intlist
@@ -98,11 +97,11 @@ def calc_pwr_consum(gamma, epsilon):
     dec_epsi = int(bin_epsi, 2)
 
     print("Printing binary gamma: {}".format(bin_gamma))
-    print("Printing decimal gamma: {}".format(dec_gamma))
+    print("Printing decimal gamma: {}\n".format(dec_gamma))
     print("Printing binary epsilon: {}".format(bin_epsi))
-    print("Printing decimal epsilon: {}".format(dec_epsi))
+    print("Printing decimal epsilon: {}\n".format(dec_epsi))
 
-    print("Your power consumption is {}".format(dec_gamma*dec_epsi))
+    print("Your power consumption is {}\n".format(dec_gamma*dec_epsi))
 
     # TODO #2 Convert gamma (str) into decimal number
 

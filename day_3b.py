@@ -1,30 +1,30 @@
 from day_3 import get_pwr_data
 
 
-def find_smaller(index_record_0, index_record_1):
+def find_smaller(list_a, list_b):
     '''Returns the smaller of either index_record_0 or index_record_1.
     Will return index_record_0 if index_record_0 and index_record_1 are
     equal.
     Input:  list[str], list[str]
     Returns:    list[str]'''
 
-    if len(index_record_0) <= len(index_record_1):  # If ir0 is smaller or equal       
-        return index_record_0
+    if len(list_a) <= len(list_b):  # If list_a is smaller or equal
+        return list_a
     else:
-        return index_record_1
+        return list_b
 
 
-def find_larger(index_record_0, index_record_1):
-    '''Returns the larger of either index_record_0 or index_record_1.
-    Will return index_record_1 if index_record_0 and index_record_1 are
+def find_larger(list_a, list_b):
+    '''Returns the larger of either list_a or list_b.
+    Will return list_a if list_a and list_b are
     equal.
     Input:  list[str], list[str]
     Returns:    list[str]'''
 
-    if len(index_record_0) > len(index_record_1):
-        return index_record_0
-    else:   # Where equal, keep the number with a "1"
-        return index_record_1
+    if len(list_a) > len(list_b):
+        return list_a
+    else:   # Where equal, return list_b
+        return list_b
 
 
 def sort_to_0_1 (data, index, least_most):
